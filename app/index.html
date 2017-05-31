@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="天弘工资条">
+  <base target="_blank">
+  <meta name="viewport" content="width=device-width">
+
+</head>
+<body ng-app="payroll" ng-controller="RootController as root" layout="column" class="payroll-app">
+<div class="{{root.agent_type}}">
+  <md-toolbar layout="row" class="site-toolbar agent-web">
+    <div class="md-toolbar-tools">
+      <h1 flex md-truncate>
+        <md-icon>
+          <svg width="24" height="24" viewBox="160 134 56 56" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(160 134)" fill="none" fill-rule="evenodd">
+              <rect fill="#38ADFF" width="56" height="56" rx="3"/>
+              <path d="M9.3 48.2h-3v-45h43.5v45h-6.2l3-4.6 3.2 4.6H9.3h3l-3-4.6-3 4.6h3zm31-4.6l-3 4.6h6.3l-3.2-4.6zm-6 0L31 48.2h6.3l-3-4.6zm-6.3 0l-3 4.6h6l-3-4.6zm-6.2 0l-3 4.6h6l-3-4.6zm-6.2 0l-3.2 4.6h6.3l-3-4.6z" fill="#FFF"/>
+              <path d="M34.3 25c1 0 1.5-.7 1.5-1.5V23c0-1-.6-1.5-1.5-1.5h-4l4.2-4.6c.6-1 .6-2 0-2.6L34 14c-.2-.4-1-.4-2 0l-4 4-4-4c0-.4-1-.5-2 0v.5c-.6.6-.6 1.5 0 2l4 4.5v.3h-4c-.8 0-1.5.6-1.5 1.5v.4c0 .8.7 1.5 1.5 1.5h4v2h-4.3c-.8 0-1.5.8-1.5 1.6v.5c0 1 .7 1.6 1.5 1.6H26V33c0 1.2 1 2.2 2 2.2 1.3 0 2.3-1 2.3-2.2v-2.3h4c1 0 1.6-.6 1.6-1.5v-.5c0-.8-1-1.5-2-1.5h-4V25h4z" fill="#38ADFF"/>
+            </g>
+          </svg>
+        </md-icon>
+        万能工资条
+      </h1>
+      <md-button class="md-icon-button">
+        <md-icon>account_circle</md-icon>
+      </md-button>
+      <span class="user">逄桂涛</span>
+    </div>
+  </md-toolbar>
+  <div flex layout="row" class="content" ng-class="{'web':'web-content','dd':'dd-content'}[root.content]">
+    <md-sidenav md-is-locked-open="true" class="site-sidenav agent-web">
+      <md-content flex>
+        <ul class="docs-menu">
+          <li>
+            <h2 class="menu-heading md-subhead ng-binding ng-scope">工资条</h2>
+            <ul class="menu-nested-list">
+              <li>
+                <md-button href="#/pay">
+                  <md-icon>send</md-icon>
+                  发工资条
+                </md-button>
+              </li>
+              <li>
+                <md-button href="#/payrolls/page/1">
+                  <md-icon>monetization_on</md-icon>
+                  工资条管理
+                </md-button>
+              </li>
+              <li>
+                <md-button href="#/welfareManager">
+                  <md-icon>local_activity</md-icon>
+                  福利管理
+                </md-button>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2 class="menu-heading md-subhead">设置</h2>
+            <ul class="menu-nested-list">
+              <li>
+                <md-button href="#/company">
+                  <md-icon>work</md-icon>
+                  企业信息
+                </md-button>
+              </li>
+              <li>
+                <md-button href="#/set">
+                  <md-icon>settings</md-icon>
+                  设置中心
+                </md-button>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h2 class="menu-heading md-subhead">帮助</h2>
+            <ul class="menu-nested-list">
+              <li>
+                <md-button href="#/instructions">
+                  <md-icon>info</md-icon>
+                  使用说明
+                </md-button>
+              </li>
+              <li>
+                <md-button href="#/problems">
+                  <md-icon>help</md-icon>
+                  常见问题
+                </md-button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <h4 class="phone-tit">客服电话</h4>
+        <p class="phone-num">400-710-9999</p>
+        <h5 class="group">丁丁客户群</h5>
+        <div class="QRcode"></div>
+      </md-content>
+    </md-sidenav>
+
+    <md-content flex id="content">
+      <md-nav-bar class="colunm-nav agent-dd"
+                  md-selected-nav-item="currentNavItem"
+                  nav-bar-aria-label="navigation links">
+        <a href="#/pay">
+          <md-nav-item md-nav-click="goto('page2')">
+            发工资条
+          </md-nav-item>
+        </a>
+        <a href="#/payrolls/page/1">
+          <md-nav-item md-nav-click="goto('page2')">
+            工资条管理
+          </md-nav-item>
+        </a>
+        <a href="#/welfareManager">
+          <md-nav-item md-nav-click="goto('page2')">
+            福利管理
+          </md-nav-item>
+        </a>
+        <a href="#/company">
+          <md-nav-item md-nav-click="goto('page3')">
+            企业信息
+          </md-nav-item>
+        </a>
+        <a href="#/set">
+          <md-nav-item md-nav-click="goto('page3')">
+            设置中心
+          </md-nav-item>
+        </a>
+        <a href="#/instructions">
+          <md-nav-item md-nav-click="goto('page3')">
+            使用说明
+          </md-nav-item>
+        </a>
+        <a href="#/problems">
+          <md-nav-item md-nav-click="goto('page3')">
+            常见问题
+          </md-nav-item>
+        </a>
+      </md-nav-bar>
+      <div ng-view></div>
+    </md-content>
+
+  </div>
+</div>
+<div class="loading" ng-if="false">
+  <div class="pacman"></div>
+  <div class="dot"></div>
+</div>
+
+</body>
+</html>

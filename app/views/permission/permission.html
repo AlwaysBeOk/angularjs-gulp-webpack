@@ -1,0 +1,25 @@
+  <md-toolbar class="md-accent agent-web">
+    <div class="md-toolbar-tools">
+      <div flex>
+        <h2>权限设置</h2>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-divider layout-align="start center" class="agent-web"></md-divider>
+  <div layout-margin layout-padding>
+    <div>
+      <span md-colors="{color: 'sun-blue-500'}">您已经拥有薪酬管理权限</span>
+      <p>如需添加其他人请先到钉钉管理后台 <a href="https://oa.dingtalk.com/index.htm#/safety/subAccount">添加子管理员</a>，然后刷新本页面</p>
+    </div>
+    <div>
+      <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" ng-repeat="name in setPmn.names">
+        {{name}}:{{data.cb1==true? "薪酬管理员" : "子管理员"}}
+      </md-checkbox>
+    </div>
+    <div>
+      <p>此处显示的为钉钉子管理员，勾选保存后成为薪酬管理员！</p>
+    </div>
+    <div>
+      <md-button class="md-raised md-primary" ng-click="setPmn.submitPermission($event)">提交</md-button>
+    </div>
+  </div>

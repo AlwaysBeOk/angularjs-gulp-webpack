@@ -1,0 +1,61 @@
+<div layout="column" class="zs-welfare-manager-wrapper">
+  <md-toolbar class="md-accent agent-web">
+    <div class="md-toolbar-tools">
+      <div flex>
+        <h2>福利管理</h2>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-content class="zs-content">
+    <div class="zs-block">
+      <span>4月免费提供福利：</span>
+      <div class="zs-verified-icon-wrapper">
+        <md-icon>verified_user</md-icon>
+        <span>企业未认证</span>
+      </div>
+      <p class="verified-tip">开通认证的企业可以享受<br/>更高等级的免费福利</p>
+    </div>
+    <div layout="row" class="zs-block zs-welfare-card-wrapper">
+      <md-card ng-repeat="item in welfareManager.welfareList" ng-if="welfareManager.verified?f:1;" ng-click="welfareManager.openBatchAddCouponPanel(item)">
+        <div class="zs-card-verified" ng-if="item.verified">
+          <md-icon>verified_user</md-icon>
+          <span>认证企业专享</span>
+        </div>
+        <img ng-src="{{ item.img }}" alt="{{ item.title }}" ng-class="item.verified? 'gray' : ''" />
+        <p class="zs-card-title">{{ item.title }}</p>
+        <p class="zs-card-subtitle">{{ item.subtitle }}</p>
+      </md-card>
+    </div>
+
+    <div class="zs-block">
+      <span>福利发放记录：</span>
+    </div>
+    <div class="zs-block zs-welfare-history">
+      <md-card ng-repeat="item in welfareManager.welfareHistoryList" ng-click="welfareManager.goWelfareInfo(item.id)">
+        <md-card-title>
+          <md-card-title-text layout="row">
+            <span flex class="date">{{ item.date }}福利</span>
+            <span flex class="push-date">{{ item.pushDate | date: 'yyyy-MM-dd' }}上传</span>
+          </md-card-title-text>
+        </md-card-title>
+
+        <md-content layout="column">
+          <div layout="row">
+            <span>发放福利</span>
+            <span>发放员工</span>
+          </div>
+          <div layout="row" class="zs-card-number">
+            <span>{{ item.welfareCount }}</span>
+            <span>{{ item.receiveStaff }}</span>
+          </div>
+
+        </md-content>
+        <div class="zs-delete-button">
+          <md-button ng-click="welfareManager.delWelfareItem(item.id); $event.stopPropagation();">
+            <span>删除</span>
+          </md-button>
+        </div>
+      </md-card>
+    </div>
+  </md-content>
+</div>

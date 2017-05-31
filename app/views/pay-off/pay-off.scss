@@ -1,0 +1,644 @@
+.progress {
+  margin-top: 40px;
+  width:800px;
+}
+/*toggle display*/
+.item-payOff, .item-check, .item-welfare, .item-send , .popup{
+  display: none;
+}
+.upload .item-payOff, .check .item-check, .welfare .item-welfare, .send .item-send ,.POPUP .popup{
+  display: block;
+}
+
+.upload .first-step, .upload .first-step md-icon,
+.check .first-step, .check .first-step md-icon,
+.check .second-step, .check .second-step md-icon,
+.welfare .first-step, .welfare .first-step md-icon,
+.welfare .second-step, .welfare .second-step md-icon,
+.welfare .third-step, .welfare .third-step md-icon,
+.send .first-step, .send .first-step md-icon,
+.send .second-step, .send .second-step md-icon,
+.send .third-step, .send .third-step md-icon,
+.send .last-step, .send .last-step md-icon {
+ color: rgb(56,173,255)
+}
+
+.icon-item {
+  margin: 0 10px;
+}
+
+.icon-item md-icon {
+  display: block;
+  margin: 0 auto;
+  width: 48px;
+  height: 48px;
+  font-size: 48px;
+}
+
+.icon-item > div {
+  text-align: center;
+}
+
+.dash-line {
+  height: 60px;
+  line-height: 60px;
+}
+
+.pay-off-desc, .pay-form {
+  max-width: 700px;
+}
+
+.pay-off-desc li {
+  line-height: 2em;
+}
+/*上传工资单样式*/
+
+/*核对数据样式*/
+.item-check .num-title,.set-title{
+  font-size:14px;
+  margin:0 20px 0 0 ;
+  height: 60px;
+  line-height: 60px;
+}
+.item-check .remind{
+  position:relative;
+}
+.item-check .remind .remind_float{
+  position: absolute;
+  top: 31px;
+  left: 46px;
+  width: 274px;
+  font-size: 12px;
+  border: 1px solid #AEAEAE;
+  padding: 6px;
+  background-color: #EFEFEF;
+  z-index: 2;
+}
+.item-check .remind .remind_float p{
+  margin: 0;
+}
+.item-check .item-check-table{
+  width: 100%;
+  overflow: auto;
+  height: 582px;
+}
+.item-check .item-check-table tbody tr td:nth-child(1){
+  min-width: 46px;
+}
+.item-check .permission{
+  height: 60px;
+  line-height: 60px;
+  margin:0;
+  font-size: 12px;
+}
+.item-check md-icon{
+  margin: 18px 0 0 18px;
+  font-size: 24px;
+}
+
+
+/* 2.0 选择福利 start */
+.item-welfare{
+  padding: 10px;
+  box-sizing: border-box;
+  //display: none;
+
+  .tips{
+    padding: 0;
+
+    li{
+      list-style: none;
+      font-size: 14px;
+      line-height: 30px;
+      color: #555;
+
+      span{
+        font-size: 40px;
+        color: #38adff;
+        vertical-align: middle;
+        position: relative;
+        top: -2px;
+        padding-right: 6px;
+      }
+    }
+  }
+
+  .zs-block{
+    margin-top:20px;
+    position: relative;
+
+    span{
+      vertical-align: middle;
+    }
+
+    span.zs-welfare-switch{
+      margin-right: 10px;
+      line-height: 62px;
+    }
+  }
+  .zs-verified-icon-wrapper{
+    display: inline-block;
+    background:#ccc;
+    padding:0 6px;
+    border-radius: 10px;
+    cursor: help;
+    md-icon{
+      font-size:20px;
+      line-height:24px;
+      color:#fff;
+    }
+    span{
+      font-size:14px;
+      color:#fff;
+      margin-left: -4px;
+    }
+  }
+  zs-verified-icon-wrapper:hover{
+
+  }
+  .zs-verified-icon-wrapper:hover +.verified-tip{
+    display: block;
+    position: absolute;
+    top:-20px;
+    left:280px;
+    font-size:14px;
+  }
+  .verified-tip{
+    display: none;
+  }
+
+  .zs-welfare-card-wrapper{
+    overflow: auto;
+    md-card{
+      width:200px;
+      min-width:200px;
+      height:260px;
+      padding:8px;
+      position: relative;
+      border: 1px solid rgba(0,0,0,0);
+
+      img{
+        width:100%;
+        height:184px;
+      }
+      img.gray{
+        -webkit-filter: grayscale(1);/* Webkit */
+        filter: grayscale(1);
+      }
+      p{
+        margin:7px 0 0 0;
+      }
+      p.zs-card-title{
+        color:#333;
+      }
+      p.zs-card-subtitle{
+        color: #999;
+        font-size:14px;
+      }
+      div.zs-card-verified{
+        background: orange;
+        padding:0 6px;
+        border-radius:10px;
+        position: absolute;
+        z-index: 100;
+        top: 80px;
+        left: 38px;
+        md-icon{
+          font-size: 18px;
+          line-height:24px;
+          color:#fff;
+        }
+        span{
+          font-size:14px;
+          vertical-align: middle;
+          color:#fff;
+        }
+      }
+    }
+    md-card:hover{
+      border: 1px solid #38adff;
+    }
+  }
+}
+/* 2.0 选择福利 end */
+
+
+
+.item-check .necessary{
+  line-height: 70px;
+  padding: 0 6px;
+  color: red;
+}
+/* 选择福利页面*/
+.item-welfare{
+  padding: 10px;
+  box-sizing: border-box;
+  //display: none;
+
+  .tips{
+    padding: 0;
+
+    li{
+      list-style: none;
+      font-size: 14px;
+      line-height: 30px;
+      color: #555;
+
+      span{
+        font-size: 40px;
+        color: #38adff;
+        vertical-align: middle;
+        position: relative;
+        top: -2px;
+        padding-right: 6px;
+      }
+    }
+  }
+
+  .zs-block{
+    margin-top:20px;
+    position: relative;
+
+    span{
+      vertical-align: middle;
+    }
+
+    span.zs-welfare-switch{
+      margin-right: 10px;
+      line-height: 62px;
+    }
+  }
+  .zs-verified-icon-wrapper{
+    display: inline-block;
+    background:#ccc;
+    padding:0 6px;
+    border-radius: 10px;
+    cursor: help;
+    md-icon{
+      font-size:20px;
+      line-height:24px;
+      color:#fff;
+    }
+    span{
+      font-size:14px;
+      color:#fff;
+      margin-left: -4px;
+    }
+  }
+  zs-verified-icon-wrapper:hover{
+
+  }
+  .zs-verified-icon-wrapper:hover +.verified-tip{
+    display: block;
+    position: absolute;
+    top:-20px;
+    left:280px;
+    font-size:14px;
+  }
+  .verified-tip{
+    display: none;
+  }
+
+  .zs-welfare-card-wrapper{
+    overflow: auto;
+    md-card{
+      width:200px;
+      min-width:200px;
+      height:260px;
+      padding:8px;
+      position: relative;
+      border: 1px solid rgba(0,0,0,0);
+
+      img{
+        width:100%;
+        height:184px;
+      }
+      img.gray{
+        -webkit-filter: grayscale(1);/* Webkit */
+        filter: grayscale(1);
+      }
+      p{
+        margin:7px 0 0 0;
+      }
+      p.zs-card-title{
+        color:#333;
+      }
+      p.zs-card-subtitle{
+        color: #999;
+        font-size:14px;
+      }
+      div.zs-card-verified{
+        background: orange;
+        padding:0 6px;
+        border-radius:10px;
+        position: absolute;
+        z-index: 100;
+        top: 80px;
+        left: 38px;
+        md-icon{
+          font-size: 18px;
+          line-height:24px;
+          color:#fff;
+        }
+        span{
+          font-size:14px;
+          vertical-align: middle;
+          color:#fff;
+        }
+      }
+    }
+    md-card:hover{
+      border: 1px solid #38adff;
+    }
+  }
+}
+/*预览并发送页面*/
+.title-preview{
+  font-size: 14px;
+}
+.item-send .send-set,.md-switch{
+  margin: 0 40px 0 20px !important;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+}
+.detail{
+  max-width: 500px;
+  min-width: 450px;
+}
+.detail h5{
+  margin: 10px 0;
+}
+.detail textarea{
+  resize:none;
+  width: 280px;
+}
+.detail tbody td{
+  text-align: left;
+}
+.detail tbody td:nth-child(2){
+  padding-right: 0 !important;
+}
+.phone{
+  position: relative;
+  height: 472px;
+  width: 250px;
+  background:url("./iPhone 6.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 50px;
+}
+/*全局小手机样式*/
+.scale {
+  font-family: "Microsoft YaHei","黑体","宋体",sans-serif;
+  height: 583px;
+  width: 330px;
+  transform: scale(0.6);
+  position: absolute;
+  top: -58px;
+  left: -44px;
+}
+.scale .scale-top{
+  height: 20px;
+  background: url("./statusbar2.png") no-repeat;
+  background-size: 330px 20px;
+  background-color: #389888;
+}
+.scale *{
+  margin: 0;
+}
+.scale .total-salary{
+  background-color: #38ADFF;
+  height: 160px;
+  color:white;
+}
+.scale .total-salary .top-title{
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  position: relative;
+  font-weight: 100;
+}
+.scale .total-salary .top-title::after{
+  position: absolute;
+  left: 14px;
+  top: 6px;
+  content: "";
+  height: 10px;
+  width: 10px;
+  display: inline-block;
+  border-left:1px solid white;
+  border-bottom:1px solid white;
+  transform: rotate(45deg);
+}
+.scale .total-salary .payrolls-time{
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: 14px;
+}
+.total-salary .payrolls-time .icon-eys{
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  vertical-align: middle;
+  background:url("./icon_display.png") no-repeat;
+  background-position: 0px 3px;
+}
+.scale .total-salary .payrolls-money{
+  height: 60px;
+  line-height: 60px;
+  font-size: 32px;
+  text-align: center;
+}
+.payrolls-detail .content-title{
+  font-size: 14px;
+  height: 26px;
+  line-height: 26px;
+  padding-left: 20px;
+  box-sizing: border-box;
+  position: relative;
+  border-bottom: 1px solid #E4E4E4;
+}
+.payrolls-detail .content-title::after{
+  content: "";
+  height: 6px;
+  width: 6px;
+  display: inline-block;
+  background-color: #38ADFF;
+  position: absolute;
+  left: 8px;
+  top: 10px;
+  border-radius:3px;
+}
+.scale .payrolls-detail .payroll-items{
+  height: 280px;
+  overflow: auto;
+}
+.payrolls-detail .payroll-item{
+  height: 40px;
+  line-height: 40px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #E4E4E4;
+}
+.payrolls-detail .payroll-item span{
+  float: right;
+}
+.scale .remind{
+  padding-left: 16px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 14px;
+}
+.scale .confirm{
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  position:absolute;
+  bottom:0;
+  text-align: center;
+  color: #38ADFF;
+  border-top:1px solid #38ADFF;
+}
+.scale .confirm .icon-check{
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background:url("./icon_enter.png");
+  vertical-align: middle;
+  margin-top: -3px;
+}
+
+//弹出层样式
+.popup *{
+  margin: 0;
+}
+.popup{
+  display: none;
+  position: absolute;
+  z-index: 100;
+  top: 40px;
+  left: 180px;
+  height: 580px;
+  width: 460px;
+  background-color: white;
+  box-shadow: 4px 30px 80px 20px ;
+}
+.popup .title{
+  height: 60px;
+  line-height: 60px;
+  margin-left: 20px;
+  border-bottom:1px solid #e4e4e4;
+}
+.popup .name_list{
+  height: 360px;
+  overflow: auto;
+  margin: 30px 0;
+  padding: 0;
+  width: 160px;
+}
+/*定义滚动条宽高及背景，宽高分别对应横竖滚动条的尺寸*/
+.name_list::-webkit-scrollbar{
+  width: 4px;
+  //height: 10px;
+  background-color: #f5f5f5;
+}
+/*定义滚动条的轨道，内阴影及圆角*/
+.name_list::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+/*定义滑块，内阴影及圆角*/
+.name_list::-webkit-scrollbar-thumb{
+  height: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
+.popup .name_list li{
+  list-style: none;
+  height: 40px;
+  cursor: pointer;
+  line-height: 40px;
+  text-align: center;
+  margin-left: 20px;
+}
+.popup .name_list a{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.popup .name_list li:hover{
+  background: #d4edff;
+  color: #38ADFF;
+}
+.popup .scale{
+  margin: 40px 0 0 200px;
+  border: 1px solid #e4e4e4;
+}
+.popup .space{
+  margin: 10px 30px;
+  width: 180px;
+}
+/* welfare panel start */
+.gray{
+  -webkit-filter: grayscale(1);/* Webkit */
+  filter: grayscale(1);
+}
+.welfare-panel{
+  width: 400px;
+  height: 550px;
+  background:#fff;
+  padding: 16px;
+
+  md-card-title{
+    padding: 0 0 16px;
+    min-height: 20px;
+    max-height: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  md-content{
+    background: #fff;
+    height: 100%;
+
+    img{
+      width: 150px;
+      height: 150px;
+      margin-left: 114px;
+      margin-top: 40px;
+    }
+
+    .welfare-panel-type{
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      margin-bottom: 6px;
+    }
+    .welfare-panel-name{
+      text-align: center;
+      color: #333;
+      font-size: 16px;
+      margin-top: 0;
+    }
+    .welfare-panel-tips{
+      height: 160px;
+      padding-right: 22px;
+      overflow: auto;
+      li{
+        color: #999;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .zs-confirm-button{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -44px;
+  }
+}
+/* welfare panel end */

@@ -1,0 +1,45 @@
+.item::before{
+  height: 0;
+  min-height: 0 !important;
+}
+.explain{
+  padding-left: 2.5em;
+  margin: 0;
+  font-weight: 500;
+  position: relative;
+  font-size: 16px;
+}
+.explain:before{
+  content: "一";
+  text-align: center;
+  color: white;
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  background-color: #38adff;
+  position: absolute;
+  top: 7px;
+  left: 4px;
+}
+.two::before{
+  content: "二";
+}
+.instructions p{
+  color: rgba(0,0,0,1);
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  padding-left: 40px !important;
+}
+.instructions li{
+  line-height: 18px;
+}
+.instructions ul,.span-pd{
+  padding: 0 0 0 70px;
+  margin: 0;
+  font-size: 12px;
+  color: #666666;
+}
+

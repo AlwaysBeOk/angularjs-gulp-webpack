@@ -1,0 +1,27 @@
+.md-whiteframe-2dp
+{
+margin: 1% 0 0 1%;
+  height: 140px;
+  box-sizing: border-box;
+  max-width: 500px;
+  cursor:pointer;
+}
+.big-icon{
+  margin: 28px 10px 0 10px;
+  height: 60px;
+  width: 60px;
+  font-size: 60px;
+  line-height: 60px;
+  text-align: center;
+  color: #888888;
+}
+.fontColor{
+  color: rgba(0,0,0,0.87);
+  margin:15px 0 10px 0;
+  display: inline;
+}
+.md-whiteframe-2dp p{
+  font-size: 14px;
+  margin-top: 10px;
+  color: #666666;
+}

@@ -1,0 +1,137 @@
+.notStatus{
+  color: #de6d00 !important;
+}
+.table-container {
+  margin-top: 16px;
+  //max-width: 100%;
+}
+.table-container .md-toolbar-search,.table-container .md-toolbar-tools-table{
+  height: 40px;
+  min-height: 40px;
+}
+.search{
+  border: 1px solid #c9c9c9;
+  line-height: 40px;
+  font-size: 14px;
+  padding-left: 10px;
+  width: 289px;
+}
+.search md-icon{
+  color: rgba(0,0,0,0.4) !important;
+}
+.search input[type=search]{
+  width: 240px;
+}
+.table-container .status{
+  height: 36px;
+  line-height: 36px;
+  font-size: 14px;
+  padding-left: 30px;
+}
+.table-container .status span{
+  margin-right: 20px;
+}
+.table-container md-table-container{
+  max-width: 100%;
+  overflow-x: auto;
+}
+.table-container .md-select{
+  margin: 0;
+  color:rgba(0,0,0,0.54)
+}
+.table-container .md-select .md-select-icon{
+  margin: 0;
+  width: 14px;
+}
+.table-container table{
+  min-width: 1048px;
+  overflow: hidden;
+}
+.table-container table tbody tr:nth-last-child(1) td{
+  border-bottom:1px solid rgba(0, 0, 0, 0.12);
+}
+.table-container .status-table-container th,.table-container .status-table-container td{
+  text-align: center !important;
+}
+.table-container .button{
+  margin-right: 3%;
+}
+.table-container .pagination{
+  margin-top: 14px;
+}
+.table-container .pagination .button{
+  float: right;
+}
+.pagination .button .page_explain{
+  font-size: 13px;
+  color: #333333;
+}
+.transparency{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 888;
+  display: none;
+}
+.transparency .tips{
+  width: 450px;
+  border: 1px solid #EEEEEE;
+  background-color: #ffffff;
+  position: fixed;
+  top: 15vh;
+  left: 32vw;
+  z-index: 999;
+  box-shadow: 0px 20px 80px 10px;
+}
+.showOrHide{
+  display: block;
+}
+.transparency .tips .person-details{
+  height: 50px;
+  min-height: 50px;
+}
+.transparency .tips .name_mobile{
+  overflow: hidden;
+  font-size: 14px;
+}
+.tips .name_mobile span:nth-child(1){
+  display: inline-block;
+  width: 42%;
+  text-align: center;
+  float:left;
+  margin: 40px 0 20px 0;
+}
+.tips .name_mobile span:nth-child(2){
+  display: inline-block;
+  width: 58%;
+  text-align: center;
+  float:left;
+  margin: 40px 0 20px 0;
+}
+.tips .tips-details{
+  margin: 0 16px;
+  min-height: 200px;
+  background-color: #ECEDEF;
+  padding-bottom: 20px;
+  font-size: 14px;
+}
+.tips .tips-details .realMoney{
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  font-weight: 600;
+}
+.tips .tips-details>span{
+  display: inline-block;
+  width: 50%;
+  box-sizing: border-box;
+  padding-left: 15%;
+  height: 46px;
+  line-height: 46px;
+}
+.transparency .tips .button{
+  display: block;
+  margin: 20px auto;
+}

@@ -1,0 +1,328 @@
+body {
+  background: #fff !important;
+}
+md-card{
+  cursor: pointer;
+}
+.colunm-nav .md-accent{
+  color: rgb(0,0,0) !important;
+}
+.Agent-DD .agent-dd,.Agent-WEB .agent-web{
+  display: block !important;
+}
+.Agent-DD .agent-web,.Agent-WEB .agent-dd{
+  display: none !important;
+}
+.Agent-WEB ,.Agent-DD{
+  height: 100%;
+}
+.web-content{
+  height: 93%;
+}
+.dd-content{
+  height: 100%;
+}
+.site-toolbar {
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .35);
+  z-index: 500;
+}
+
+.site-toolbar h1, .site-toolbar md-icon {
+  color: white !important;
+}
+.site-toolbar .user{
+  font-size: 14px;
+}
+
+input[type="search"] {
+  border: none;
+  outline: none;
+}
+textarea{
+  border: none;
+  background-color: #ffffff;
+}
+md-dialog .md-title{
+  text-align: center;
+}
+md-dialog button{
+  width: 50%;
+  margin: 8px !important;
+}
+md-dialog md-dialog-actions{
+  padding: 0 8px !important;
+}
+
+/************
+ * DOCS MENU
+ ************/
+.site-sidenav {
+  background: #fff;
+  border-right: 1px solid #E4E4E4;
+  color: white !important;
+}
+.site-sidenav md-content {
+  background: transparent;
+}
+.site-sidenav,
+.site-sidenav.md-locked-open-add-active,
+.site-sidenav.md-locked-open {
+  width: 231px;
+  min-width: 231px;
+  max-width: 231px;
+}
+.site-sidenav > * {
+  min-width: 218px;
+}
+.docs-menu,
+.docs-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.docs-menu li {
+  margin: 0;
+}
+
+.md-whiteframe-glow-z1 {
+  box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14),
+  0px 0px 2px 2px rgba(0, 0, 0, 0.098),
+  0px 0px 5px 1px rgba(0, 0, 0, 0.084);
+}
+
+.docs-menu .md-button {
+  border-radius: 0;
+  color: rgba(0,0,0,0.54);
+  cursor: pointer;
+  display: block;
+  align-items: inherit;
+  line-height: 44px;
+  font-size: 16px;
+  margin: 0;
+  height: 44px;
+  overflow: hidden;
+  padding: 0 30px 0 40px;
+  text-align: left;
+  text-decoration: none;
+  white-space: normal;
+  width: 100%;
+}
+
+.docs-menu .md-button:hover,
+.docs-menu .md-button:focus,
+.docs-menu .md-button:hover md-icon,
+.docs-menu .md-button:focus md-icon {
+  color: #38adff;
+  background: #E5F4FF !important;
+}
+.docs-menu .md-button md-icon {
+  color: rgba(0,0,0,0.54);
+  vertical-align: middle;
+  margin-top: -3px;
+}
+.docs-menu md-select {
+  /* Override md-select margins.  With margins the menu will look incorrect and causes mobile list
+     to not be scrollable.
+   */
+  margin: 0;
+  width: 100%;
+}
+.docs-menu md-select md-select-label {
+  justify-content: flex-end;
+  padding-top: 10px;
+}
+.docs-menu md-select md-select-label span {
+  margin-right: auto;
+  padding-left: 13px;
+}
+.docs-menu md-select .md-select-icon {
+  margin-right: 28px;
+}
+.docs-menu button.md-button::-moz-focus-inner {
+  padding: 0;
+}
+.docs-menu .md-button.active {
+  background: #38adff;
+}
+.menu-heading {
+  display: block;
+  height: 42px;
+  line-height: 42px !important;
+  font-size: 12px !important;
+  margin: 0;
+  padding: 0 20px 0 30px;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  color: rgba(0,0,0,0.54);
+}
+.docs-menu li.parentActive,
+.docs-menu li.parentActive .menu-toggle-list {
+  /*background-color: #2C80D2 !important;*/
+}
+.menu-toggle-list {
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  -webkit-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+  -webkit-transition-property: height;
+  -moz-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+  -moz-transition-property: height;
+  transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+  transition-property: height;
+}
+.docs-menu .menu-toggle-list a.md-button {
+  display: block;
+  padding: 0 16px 0 32px;
+  text-transform: none;
+  text-rendering: optimizeLegibility;
+  font-weight: 500;
+}
+.parent-list-item:last-child {
+  margin-bottom: 20px;
+  /* Prevent the hidden License link from causing a double bottom-border */
+  border-bottom: none;
+}
+.md-button-toggle .md-toggle-icon {
+  display: block;
+  margin-left: auto;
+  speak: none;
+  vertical-align: middle;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  transition: transform 0.3s ease-in-out;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+}
+.md-button-toggle .md-toggle-icon.toggled {
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+}
+.phone-tit{
+  padding-left: 46px;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.54);
+}
+.phone-num{
+  margin-top: 0;
+  padding-left: 46px;
+  color: rgba(0, 0, 0, 0.54);
+}
+.group{
+  padding-left: 46px;
+  margin-bottom: 0;
+  color: rgba(0, 0, 0, 0.54);
+}
+.QRcode{
+  height: 120px;
+  width: 120px;
+  background: url("../erweima.png") no-repeat;
+  margin: 0 auto;
+}
+/* End Docs Menu */
+
+#content {
+  margin-left: 14px;
+  background: white;
+}
+
+table.md-table th.md-column {
+  background: #fafafa;
+}
+
+.payroll-app table.md-table thead.md-head > tr.md-row {
+  height: 36px;
+}
+
+
+/* loading Animation */
+$width: 40px;
+$height: $width/2;
+$time: 0.4s;
+
+@mixin animation($name) {
+  @-webkit-keyframes #{$name} {@content;}
+  @-moz-keyframes #{$name} {@content;}
+  @-o-keyframes #{$name} {@content;}
+  @keyframes #{$name} {@content;}
+}
+
+@include animation(up) {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
+}
+
+@include animation(down) {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+}
+
+@include animation(r-to-l) {
+  100% {
+    margin-left: -1px;
+  }
+}
+
+@mixin use-animation($name, $time){
+  animation: $name $time infinite;
+}
+
+
+.loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: #38adff;
+
+  .pacman:before, .pacman:after{
+    content: '';
+    position: absolute;
+    background: white;
+    width: $width;
+    height: $height;
+    left: 50%;
+    top: 50%;
+    margin-left: - $width/2;
+    margin-top: - $height;
+    border-radius: $height $height 0 0;
+    @include use-animation(up, $time);
+  }
+
+  .pacman:after {
+    margin-top: -1px;
+    border-radius: 0 0 $height $height;
+    @include use-animation(down, $time);
+  }
+
+  .dot{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: $height/3;
+    height: $height/3;
+    margin-top: - $height/10;
+    margin-left: 30px;
+    border-radius: 50%;
+    background: white;
+    z-index: -1;
+    box-shadow: 30px 0 0 white,
+    60px 0 0 white,
+    90px 0 0 white,
+    120px 0 0 white,
+    150px 0 0 white;
+    @include use-animation(r-to-l, $time);
+  }
+}

@@ -1,0 +1,52 @@
+  <md-toolbar class="md-accent agent-web">
+    <div class="md-toolbar-tools">
+      <div flex>
+        <h2>设置中心</h2>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-divider layout-align="start center" class="agent-web"></md-divider>
+  <div layout="row" layout-padding layout-wrap style="padding-bottom: 32px;" ng-cloak class="md-padding">
+    <md-whiteframe class="md-whiteframe-2dp" flex-sm="60" flex-gt-sm="40" flex-gt-md="35" layout layout-align="start top">
+      <md-icon class="material-icons big-icon md-primary">notifications_none</md-icon>
+      <div layout="column" class="md-margin">
+        <span class="fontColor">提醒设置</span>
+        <p>可设置指定日期发工资条</p>
+      </div>
+    </md-whiteframe>
+    <md-whiteframe class="md-whiteframe-2dp" flex-sm="60" flex-gt-sm="40" flex-gt-md="35" layout layout-align="start top" ng-click="setCen.permission_href()">
+        <md-icon class="material-icons big-icon md-primary">verified_user</md-icon>
+        <div layout="column" class="md-margin">
+          <span class="fontColor">权限设置</span>
+          <p>可指定薪酬管理员，进行权限转移</p>
+        </div>
+    </md-whiteframe>
+    <md-whiteframe class="md-whiteframe-2dp" flex-sm="60" flex-gt-sm="40" flex-gt-md="35" layout layout-align="start top">
+      <md-icon class="material-icons big-icon md-primary">lock</md-icon>
+      <div layout="column" class="md-margin">
+        <span class="fontColor">安全设置</span>
+        <p>可设置员工查看数据时的安全等级</p>
+      </div>
+    </md-whiteframe>
+    <md-whiteframe class="md-whiteframe-2dp" flex-sm="60" flex-gt-sm="40" flex-gt-md="35" layout layout-align="start top">
+      <md-icon class="material-icons big-icon md-primary">vpn_key</md-icon>
+      <div layout="column" class="md-margin">
+        <span class="fontColor">密码设置</span>
+        <p>修改管理员密码</p>
+      </div>
+    </md-whiteframe>
+    <md-whiteframe class="md-whiteframe-2dp" flex-sm="60" flex-gt-sm="40" flex-gt-md="35" layout layout-align="start top" ng-click="setCen.syncList_href()">
+      <md-icon class="material-icons big-icon md-primary">sync</md-icon>
+      <div layout="column" class="md-margin">
+        <span class="fontColor">钉钉通讯录同步</span>
+        <p>可同步钉钉通讯录</p>
+      </div>
+    </md-whiteframe>
+    <md-whiteframe class="md-whiteframe-2dp" flex-sm="60" flex-gt-sm="40" flex-gt-md="35" layout layout-align="start top" ng-click="setCen.transfer_href()">
+      <md-icon class="material-icons big-icon md-primary">reply</md-icon>
+      <div layout="column" class="md-margin">
+        <span class="fontColor">权限转移</span>
+        <p>可将名下的权限转移给指定同事</p>
+      </div>
+    </md-whiteframe>
+  </div>

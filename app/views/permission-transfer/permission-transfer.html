@@ -1,0 +1,24 @@
+  <md-toolbar class="md-accent agent-web">
+    <div class="md-toolbar-tools">
+      <div flex>
+        <h2>权限转移</h2>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-divider layout-align="start center" class="agent-web"></md-divider>
+  <div layout-margin layout-padding>
+    <div>
+      <span md-colors="{color: 'sun-blue-500'}">所有名下的薪酬数据将移交给指定人，权限一旦转移，将无法撤回。</span>
+    </div>
+    <div>
+      <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1" ng-repeat="name in TransferPmn.names">
+        {{name}}
+      </md-checkbox>
+    </div>
+    <div>
+      <p>此处显示的为钉钉薪酬管理员，勾选后保存后将由钉钉主管理员（MAX）进行确认！</p>
+    </div>
+    <div>
+      <md-button class="md-raised md-primary" ng-click="TransferPmn.submitPermission($event)">已转移（待确认）</md-button>
+    </div>
+  </div>

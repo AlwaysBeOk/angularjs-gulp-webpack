@@ -1,0 +1,34 @@
+<div layout="column" class="zs-welfare-info-wrapper">
+  <md-toolbar class="md-accent agent-web">
+    <div class="md-toolbar-tools">
+      <div flex>
+        <h2><span><a href="#/welfareManager">福利管理 > </a></span>福利详情</h2>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-content>
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="zs-big-title">{{ welfareInfo.welfareInfoObj.title }}</span>
+          <div layout="row" class="zs-small-subtitle">
+            <span>发放福利：</span>
+            <span>{{ welfareInfo.welfareInfoObj.welfareCount }}</span>
+            <span class="zs-small-staff">发放员工：</span>
+            <span>{{ welfareInfo.welfareInfoObj.receiveStaff }}</span>
+          </div>
+        </md-card-title-text>
+      </md-card-title>
+      <md-content class="zs-welfare-card-wrapper">
+        <div class="zs-welfare-card" layout="row">
+          <md-card ng-repeat="item in welfareInfo.welfareInfoCard" ng-click="welfareInfo.openBatchAddCouponPanel(item)">
+            <img ng-src="{{ item.img }}" alt="{{ item.title }}" />
+            <p class="zs-card-title">{{ item.title }}</p>
+            <p class="zs-card-subtitle">{{ item.subtitle }}</p>
+          </md-card>
+        </div>
+      </md-content>
+
+    </md-card>
+  </md-content>
+</div>

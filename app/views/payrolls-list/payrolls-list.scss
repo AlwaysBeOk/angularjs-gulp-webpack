@@ -1,0 +1,44 @@
+.payroll-list .md-card-title {
+  padding: 16px 16px 16px 0 !important;
+  margin-left: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.payroll-list .card-tit {
+  height: 26px;
+}
+.payroll-list .md-headline {
+  font-size: 16px;
+  line-height: 26px;
+}
+.payroll-list .md-subhead {
+  font-size: 12px;
+  color: #999999;
+  padding: 0 !important;
+  line-height: 26px;
+}
+.payroll-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.payroll {
+  flex: 1;
+  min-width: 360px;
+  max-width: 360px;
+  cursor: pointer;
+  border: 1.5px solid #FFFFFF;
+}
+.payroll:hover{
+  border: 1.5px solid #76BFF0;
+}
+.payroll p{
+  margin-top: 16px !important;
+}
+.payroll p:nth-child(2){
+  margin: 16px 0 0 26px;
+}
+.payroll p span:nth-child(1){
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 10px;
+}

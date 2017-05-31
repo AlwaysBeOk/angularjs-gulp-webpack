@@ -1,0 +1,170 @@
+.zs-welfare-manager-wrapper{
+  md-toolbar{
+    border-bottom: 1px solid #ccc;
+  }
+
+  .zs-content{
+    padding:20px;
+    padding-top:0;
+    width:100%;
+    height:100%;
+    background:#fff;
+    box-sizing: border-box;
+
+    .zs-block{
+      margin-top:20px;
+      span{
+        vertical-align: middle;
+      }
+    }
+    .zs-verified-icon-wrapper{
+      display: inline-block;
+      background:#ccc;
+      padding:0 6px;
+      border-radius: 10px;
+      cursor: help;
+      md-icon{
+        font-size:20px;
+        line-height:24px;
+        color:#fff;
+      }
+      span{
+        font-size:14px;
+        color:#fff;
+        margin-left: -4px;
+      }
+    }
+    zs-verified-icon-wrapper:hover{
+
+    }
+    .zs-verified-icon-wrapper:hover +.verified-tip{
+      display: block;
+      position: absolute;
+      top:0;
+      left:280px;
+      font-size:14px;
+    }
+    .verified-tip{
+      display: none;
+    }
+
+    .zs-welfare-card-wrapper{
+      //margin-top:10px;
+      overflow: auto;
+      padding-bottom: 20px;
+
+      md-card{
+        width:200px;
+        min-width:200px;
+        height:260px;
+        padding:8px;
+        border: 1px solid rgba(0,0,0,0);
+        position: relative;
+
+        img{
+          width:100%;
+          height:184px;
+        }
+        img.gray{
+          -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+        }
+        p{
+          margin:7px 0 0 0;
+        }
+        p.zs-card-title{
+          color:#333;
+        }
+        p.zs-card-subtitle{
+          color: #999;
+          font-size:14px;
+        }
+        div.zs-card-verified{
+          background: orange;
+          padding:0 6px;
+          border-radius:10px;
+          position: absolute;
+          top: 80px;
+          left: 38px;
+          z-index: 1000;
+          md-icon{
+            font-size: 18px;
+            line-height:24px;
+            color:#fff;
+          }
+          span{
+            font-size:14px;
+            vertical-align: middle;
+            color:#fff;
+          }
+        }
+      }
+      md-card:hover{
+        border: 1px solid #38ADFF;
+      }
+    }
+    .zs-welfare-history{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      md-card{
+        padding: 0 14px;
+        min-width:360px;
+        max-width:360px;
+        border: 1px solid rgba(0,0,0,0);
+        flex: 1;
+
+        md-card-title{
+          border-bottom:1px solid #ccc;
+          padding:16px 0;
+
+          .date{
+
+          }
+          .push-date{
+            text-align: right;
+            font-size:14px;
+            color:#999;
+          }
+        }
+
+        md-content{
+          padding:10px 20px 0;
+          background:#fff;
+
+          >div>span{
+            display: inline-block;
+            width:100px;
+            margin-top:6px;
+            font-size: 14px;
+            color: #444;
+          }
+
+          .zs-card-number{
+            span{
+              font-size: 16px;
+              font-weight: 500;
+              color:#333;
+            }
+          }
+
+
+        }
+
+        .zs-delete-button{
+          text-align: right;
+          span{
+            color: #38ADFF;
+          }
+        }
+      }
+
+      md-card:hover{
+        border: 1px solid #38ADFF;
+        cursor: pointer;
+      }
+    }
+
+  }
+}

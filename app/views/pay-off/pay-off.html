@@ -1,0 +1,279 @@
+<md-toolbar class="md-accent agent-web">
+  <div class="md-toolbar-tools">
+    <div flex>
+      <h2>发工资条</h2>
+    </div>
+  </div>
+</md-toolbar>
+<md-divider layout-align="start center" class="agent-web"></md-divider>
+<div class="content {{payOff.progressState}}">
+  <div class="progress" layout="row">
+    <div class="first-step">
+      <div class="icon-item">
+        <md-icon>backup</md-icon>
+        <div>上传工资单</div>
+      </div>
+    </div>
+    <div layout="row" class="second-step">
+      <div class="dash-line">------------------</div>
+      <div class="icon-item">
+        <md-icon class="change">assignment_turned_in</md-icon>
+        <div>核对数据</div>
+      </div>
+    </div>
+    <div layout="row" class="third-step">
+      <div class="dash-line">------------------</div>
+      <div class="icon-item">
+        <md-icon class="change">local_activity</md-icon>
+        <div>选择福利</div>
+      </div>
+    </div>
+    <div layout="row" class="last-step">
+      <div class="dash-line">------------------</div>
+      <div class="icon-item">
+        <md-icon class="change">send</md-icon>
+        <div>预览并发送</div>
+      </div>
+    </div>
+  </div>
+  <div class="progress item-payOff">
+    <ul class="pay-off-desc">
+      <li>支持Excel格式上传工资单，列数不限，建议包括：姓名，手机号，实发工资，确保数据真实有效</li>
+      <li>您也可以下载工资单模板，然后将已核算完的工资数据粘贴到模板中上传</li>
+      <li>特别声明：所有薪酬数据均采用非对称加密算法，即便数据库管理员也无法查看到原始数据</li>
+    </ul>
+    <form class="pay-form" name="projectForm">
+      <md-input-container class="md-block" flex="30">
+        <label>发薪月份(如:201705)</label>
+        <input ng-model="payOff.payroll.salaryMonth" type="text" name="rate" ng-change="payOff.change()" ng-pattern="/^\d{4}((0[1-9])|(1[0-2]))$/"/>
+        <div ng-messages="projectForm.rate.$error" >
+          <div ng-message="pattern">请输入正确日期格式</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block" flex="30">
+        <label>请选择薪资类型</label>
+        <md-select flex ng-model="payOff.payroll.salaryTypeDictId" ng-change="payOff.change()" id="select">
+          <md-option ng-repeat="type in payOff.payTypes" value="{{type.dictInfoId}}">{{type.infoName}}</md-option>
+          <!--dictInfoId-->
+        </md-select>
+      </md-input-container>
+      <md-input-container flex="30" class="md-block">
+        <label>发薪标题(不可编辑)</label>
+        <input ng-model="payOff.payroll.salaryTitle" readonly="readonly">
+      </md-input-container>
+      <!--<div class="payroll_title">发薪标题：{{payOff.payroll.salaryTitle}}</div>-->
+      <div ng-hide="payOff.loading">
+        <md-button class="md-raised md-primary" ng-click="payOff.upload()">
+          <md-icon>file_upload</md-icon>
+          上传工资单（excel，csv）
+        </md-button>
+        <input type="file" id="upload" hidden="hidden" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+               onchange="angular.element(this).scope().payOff.fileSelected(this)" ng-model="payOff.excel"/>
+        <md-button>下载单模板</md-button>
+      </div>
+      <md-progress-circular ng-show="payOff.loading" class="md-hue-2" md-diameter="20px"></md-progress-circular>
+    </form>
+  </div>
+  <div class="progress item-check">
+    <h3 class="num-title">本次导入数量：<span>{{payOff.tableDataLength}}</span></h3>
+    <div class="item-check-table">
+      <table md-table>
+        <thead md-head>
+        <tr md-row>
+          <th md-column ng-repeat="header in payOff.tableHeader">{{header}}</th>
+        </tr>
+        </thead>
+        <tbody md-body>
+        <tr md-row ng-repeat="row in payOff.tableData">
+          <td md-cell ng-repeat="(key, value) in row">{{value}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div layout="row">
+      <h3 class="set-title">必填项设置</h3>
+      <p class="permission">请设置必填项与Excel中数据的对应关系，其中姓名、手机号必须与钉钉中一致</p>
+      <div class="remind">
+        <md-icon ng-mouseenter="payOff.onRemind()" ng-mouseleave="payOff.outRemind()">help_outline</md-icon>
+        <div class="remind_float" ng-show="payOff.remind_float">
+          <p>1、上传Excel文档进行批量发送工资条时，系统会解析您上传的Excel文档</p>
+          <p>2、由于每个人上传的Excel文档内容存在差异，因此需要您具体告诉Excel文档中哪一列存储的是员工姓名、手机、实发金额信息，您正确设置了这些信息后，才能确保将正确的数据发送给指定的员工。</p>
+        </div>
+      </div>
+    </div>
+    <div layout="row">
+      <span class="necessary">*</span>
+      <md-input-container flex class="md-block" layout="row">
+        <label>姓名</label>
+        <md-select flex ng-model="payOff.mapping.name">
+          <md-option ng-value="$index" ng-repeat="header in payOff.tableHeader">{{header}}</md-option>
+        </md-select>
+      </md-input-container>
+      <span class="necessary">*</span>
+      <md-input-container flex class="md-block" layout="row">
+        <label>手机号</label>
+        <md-select flex ng-model="payOff.mapping.mobile">
+          <md-option ng-value="$index" ng-repeat="header in payOff.tableHeader">{{header}}</md-option>
+        </md-select>
+      </md-input-container>
+      <span class="necessary">*</span>
+      <md-input-container flex class="md-block" layout="row">
+        <label>实发工资</label>
+        <md-select flex ng-model="payOff.mapping.salary">
+          <md-option ng-value="$index" ng-repeat="header in payOff.tableHeader">{{header}}</md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+    <div>
+      <md-button class="md-raised" ng-click="payOff.afresh_check()">重新上传</md-button>
+      <input type="file" id="upload2" hidden="hidden" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+             onchange="angular.element(this).scope().payOff.fileSelected(this)" ng-model="payOff.excel"/>
+      <md-button class="md-raised md-primary" ng-click="payOff.next_check()">下一步</md-button>
+    </div>
+  </div>
+  <div class="progress item-welfare">
+    <ul class="tips">
+      <li><span>·</span>福利工资条免费提供福利，由您选择发放给员工，您的企业无需为此承担费用</li>
+      <li><span>·</span>福利每月随工资条发放到员工的钉钉账户，员工选择自由使用</li>
+      <li><span>·</span>免费福利每月限发放一次</li>
+      <li><span>·</span>根据企业的不同等级，福利会进行调整，企业等级越高，福利越高</li>
+    </ul>
+    <div class="zs-block">
+      <span>本月免费提供福利：</span>
+      <div class="zs-verified-icon-wrapper">
+        <md-icon>verified_user</md-icon>
+        <span>企业未认证</span>
+      </div>
+      <p class="verified-tip">开通认证的企业可以享受<br/>更高等级的免费福利</p>
+    </div>
+    <div layout="row" class="zs-block zs-welfare-card-wrapper">
+      <md-card ng-repeat="item in payOff.welfareList" ng-if="payOff.verified?f:1;" ng-click="payOff.openBatchAddCouponPanel(item)">
+        <div class="zs-card-verified" ng-if="item.verified">
+          <md-icon>verified_user</md-icon>
+          <span>认证企业专享</span>
+        </div>
+        <img ng-src="{{ item.img }}" alt="{{ item.title }}" ng-class="item.verified ? 'gray' : ''"/>
+        <p class="zs-card-title">{{ item.title }}</p>
+        <p class="zs-card-subtitle">{{ item.subtitle }}</p>
+      </md-card>
+    </div>
+    <div class="zs-block" layout="row">
+      <span class="zs-welfare-switch">是否发放</span>
+      <md-switch aria-label=" " ng-model="payOff.welfareIf"></md-switch>
+    </div>
+    <div class="zs-block">
+      <div>
+        <md-button class="md-raised md-primary" ng-click="payOff.afresh_welfare()">上一步</md-button>
+        <md-button class="md-raised md-primary" ng-click="payOff.next_welfare()">下一步</md-button>
+      </div>
+    </div>
+  </div>
+  <div class="progress item-send">
+    <h4 class="title-preview">工资明细</h4>
+    <div layout="row">
+      <div class="detail">
+        <md-table-container class="detail-table-container">
+          <table md-table md-row-select="false" multiple="false" data-ng-model="payOff.tableHeader">
+            <thead md-head>
+            <tr md-row>
+              <th md-column>条目</th>
+              <th md-column>明细说明</th>
+              <th md-column></th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row  md-auto-select ng-repeat="(key,value) in payOff.tableHeader" class="md-row-custom" ng-if="value!=payOff.name && value!=payOff.mobile && value!=payOff.salary">
+              <td md-cell>{{value}}</td>
+              <td md-cell><textarea name="" id="textarea{{$index}}" cols="25" rows="2" disabled ng-model="$parent.payOff.salaryDetail[payOff.tableHeader[$index]]" ng-blur="payOff.blur($index)"></textarea></td>
+              <td md-cell ng-click="payOff.editChange($index)">
+                <md-icon>edit</md-icon>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </md-table-container>
+      </div>
+      <div class="phone">
+        <div class="scale">
+          <div class="scale-top"></div>
+          <div class="total-salary">
+            <h4 class="top-title">
+              薪资详情
+              <md-icon style="color: white;vertical-align: top">help_outline</md-icon>
+            </h4>
+            <p class="payrolls-time">
+              <span>2017</span>年<span>3</span>月薪资
+              <span class="icon-eys"></span>
+            </p>
+            <p class="payrolls-money">10000.<span class="decimals">50</span></p>
+          </div>
+          <div class="payrolls-detail">
+            <h4 class="content-title">明细</h4>
+            <div class="payroll-items">
+              <div class="payroll-item" data-ng-repeat="(key,value) in payOff.detail" ng-if="key!=payOff.name && key!=payOff.mobile">
+                {{key}}
+                <span>{{value}}</span>
+              </div>
+            </div>
+          </div>
+          <p class="remind">温馨提示：工资条属于敏感信息，请注意保密</p>
+          <div class="confirm">
+            <span class="icon-check"></span>
+            确认以上信息
+            <span></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div layout="row" layout-align="">
+      <md-button class="md-raised" ng-click="payOff.previous()">上一步</md-button>
+      <md-button class="md-raised md-primary" ng-click="payOff.save_()">保存稍后发送</md-button>
+      <md-button class="md-raised md-primary" ng-click="payOff.preview()">预览并发送</md-button>
+    </div>
+  </div>
+  <div class="popup">
+    <h2 class="title">预览并发送</h2>
+    <div layout="row">
+      <ul class="name_list">
+        <li ng-repeat="row in payOff.tableData">
+          <a ng-repeat="(key,value) in row" ng-if="key == payOff.name" data-ng-click="payOff.changeUser(row)">{{value}}</a>
+        </li>
+      </ul>
+      <div class="scale">
+        <div class="xxx"></div>
+        <div class="total-salary">
+          <h4 class="top-title">
+            薪资详情
+            <md-icon style="color: white;vertical-align: top">help_outline</md-icon>
+          </h4>
+          <p class="payrolls-time">
+            <span>2017</span>年<span>3</span>月薪资
+            <span class="icon-eys"></span>
+          </p>
+          <p class="payrolls-money">10000.<span class="decimals">50</span></p>
+        </div>
+        <div class="payrolls-detail">
+          <h4 class="content-title">明细</h4>
+          <div id="payroll-items" class="payroll-items">
+            <div class="payroll-item" data-ng-repeat="(key,value) in payOff.detail" ng-if="key!=payOff.name && key!=payOff.mobile">
+              {{key}}
+              <span>{{value}}</span>
+            </div>
+          </div>
+        </div>
+        <p class="remind">温馨提示：工资条属于敏感信息，请注意保密</p>
+        <div class="confirm">
+          <span class="icon-check"></span>
+          确认以上信息
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div class="md-padding" layout="row" layout-align="center center">
+      <md-button class="md-raised space" ng-click="payOff.cancel()">取消</md-button>
+      <md-button class="md-raised md-primary space" ng-click="payOff.affirmAndSend()">确认发送</md-button>
+    </div>
+  </div>
+
+</div>

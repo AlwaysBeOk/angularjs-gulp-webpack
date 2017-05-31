@@ -1,0 +1,50 @@
+.item::before{
+  height: 0;
+  min-height: 0 !important;
+}
+.problem h4{
+  padding: 0 0 0 50px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #222222;
+  margin: 0 0 10px 0;
+  height: 36px;
+  line-height: 36px;
+  position: relative;
+}
+.problem h4:before{
+  content: "Q";
+  text-align: center;
+  color: white;
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  background-color: #38adff;
+  position: absolute;
+  top: 7px;
+  left: 4px;
+}
+.problem p{
+  padding-left: 66px;
+  margin-bottom: 40px;
+  height: 24px;
+  font-size: 16px;
+  color: #666666;
+  position: relative;
+}
+.problem p:before{
+  content: "A";
+  text-align: center;
+  color: white;
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  background-color: #c4e2fe;
+  position: absolute;
+  top: 0;
+  left: 30px;
+}

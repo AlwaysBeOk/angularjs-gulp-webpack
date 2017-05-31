@@ -1,0 +1,45 @@
+  <md-toolbar class="md-accent agent-web">
+    <div class="md-toolbar-tools">
+      <div flex>
+        <h2>工资条管理</h2>
+      </div>
+      <md-button class="md-icon-button" ng-click="$ctrl.prev()" ng-disabled="$ctrl.page == 1">
+        <md-icon>keyboard_arrow_left</md-icon>
+        <md-tooltip>上一页</md-tooltip>
+      </md-button>
+      <md-button class="md-icon-button" ng-click="$ctrl.next()" ng-disabled="$ctrl.page == $ctrl.pageCount">
+        <md-icon>keyboard_arrow_right</md-icon>
+        <md-tooltip>下一页</md-tooltip>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-divider layout-align="start center" class="agent-web"></md-divider>
+  <div class="payroll-list">
+    <md-card class="payroll" ng-repeat="payroll in $ctrl.payrolls.payload.details | orderBy:'createTime':'desc'"ng-click="$ctrl.showDetails(payroll.salaryBillId)">
+      <md-card-title>
+        <md-card-title-text layout="row" layout-align="space-between" class="card-tit">
+          <span class="md-headline">{{payroll.salaryTitle}}</span>
+          <span class="md-subhead"><span>{{payroll.updateTime | date: 'yyyy-MM-dd'}}</span>上传</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content layout="row">
+        <p layout="column">
+          <span>发放员工</span>
+          <span>{{payroll.sendCount}}</span>
+        </p>
+        <p layout="column">
+          <span>查看员工</span>
+          <span>{{payroll.seeCount}}</span>
+        </p>
+      </md-card-content>
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button class="md-icon-button md-primary" ng-click="$ctrl.compile(payroll.salaryBillId,$event)">
+          编辑
+        </md-button>
+        <md-button class="md-icon-button md-primary" ng-click="$ctrl.confirmDelete(payroll.salaryBillId,$event)">
+          删除
+        </md-button>
+      </md-card-actions>
+    </md-card>
+  </div>
+

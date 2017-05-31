@@ -1,0 +1,127 @@
+<md-toolbar class="md-accent agent-web">
+  <div class="md-toolbar-tools">
+    <div flex>
+      <h2><span style="color: #9b9b9b">工资条管理 ></span> 薪资详情</h2>
+    </div>
+  </div>
+</md-toolbar>
+<md-divider layout-align="start center" class="agent-web"></md-divider>
+<div class="table-container" id="popupContainer">
+  <md-toolbar class="md-accent md-toolbar-search">
+    <div class="md-toolbar-tools md-toolbar-tools-table" layout="row" layout-align="space-between">
+      <div class="search">
+        <label>
+          <md-icon>search</md-icon>
+          <input type="search" placeholder="搜索" ng-model="payrollsMgr.searchName" ng-change="payrollsMgr.conditionQuery()"/>
+        </label>
+      </div>
+      <div class="button">
+        <md-button ng-click="payrollsMgr.batchDerive($event)">
+          <md-icon>file_download</md-icon>
+          批量导出
+        </md-button>
+        <md-button ng-click="payrollsMgr.sendAll($event)">
+          <md-icon>send</md-icon>
+          全部发送
+        </md-button>
+        <md-button ng-click="payrollsMgr.recallAll($event)">
+          <md-icon>undo</md-icon>
+          全部撤回
+        </md-button>
+      </div>
+    </div>
+  </md-toolbar>
+  <div class="status">
+    <span>发放员工：{{payrollsMgr.datas.sendCount}}</span>
+    <span>查看员工：{{payrollsMgr.datas.seeCount}}</span>
+    <span>未发送：{{payrollsMgr.datas.unsendCount}}</span>
+    <span>已撤回：{{payrollsMgr.datas.callBackCount}}</span>
+  </div>
+  <md-table-container>
+    <table md-table md-progress="payrollsMgr.datas" md-row-select="false" multiple="true" class="status-table-container">
+      <thead md-head>
+        <tr md-row>
+          <th md-column>姓名</th>
+          <th md-column>手机</th>
+          <th md-column>实发金额</th>
+          <th md-column>
+            <md-select ng-model="payrollsMgr.chooseSendStatus" placeholder="发送状态" class="md-no-underline md-select" ng-change="payrollsMgr.conditionQuery()">
+              <md-option value="">全部</md-option>
+              <md-option value="0">未发送</md-option>
+              <md-option value="1">已发送</md-option>
+              <md-option value="2">已撤回</md-option>
+            </md-select>
+          </th>
+          <th md-column>
+            <md-select ng-model="payrollsMgr.chooseReadStatus" placeholder="查看状态" class="md-no-underline md-select" ng-change="payrollsMgr.conditionQuery()">
+              <md-option value="">全部</md-option>
+              <md-option value="0">未查看</md-option>
+              <md-option value="1">已查看</md-option>
+            </md-select>
+          </th>
+          <th md-column>
+            <md-select ng-model="payrollsMgr.chooseConfirmStatus" placeholder="确认状态" class="md-no-underline md-select" ng-change="payrollsMgr.conditionQuery()">
+              <md-option value="">全部</md-option>
+              <md-option value="0">未确认</md-option>
+              <md-option value="1">已确认</md-option>
+            </md-select>
+          </th>
+          <th md-column style="width: 33%">操作</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row ng-repeat="payroll in payrollsMgr.details">
+          <td md-cell>{{payroll.employeeName}}</td>
+          <td md-cell>{{payroll.mobile}}</td>
+          <td md-cell>{{payroll.realMoney | Digit}}</td>
+          <td md-cell ng-class="{'0':'notStatus'}[payroll.sendStatus]">{{payroll.sendStatus==0?"未发送":payroll.sendStatus==1?"已发送":"已撤回"}}</td>
+          <td md-cell ng-class="{'0':'notStatus'}[payroll.readStatus]">{{payroll.readStatus==0?"未查看":"已查看"}}</td>
+          <td md-cell ng-class="{'0':'notStatus'}[payroll.confirmStatus]">{{payroll.confirmStatus==0?"未确认":"已确认"}}</td>
+          <td md-cell>
+            <button type="button" md-button class="md-primary" ng-click="payrollsMgr.personDetail(payroll.salaryBillDetailId)">查看详情</button>
+            <button type="button" md-button class="md-primary" ng-click="payrollsMgr.afreshSend(payroll.salaryBillDetailId,$event,payroll)">重发</button>
+            <button type="button" md-button class="md-primary" ng-click="payrollsMgr.recall(payroll.salaryBillDetailId,$event,payroll)">撤回</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <div class="pagination">
+    <div class="button">
+      <span class="page_explain">第{{payrollsMgr.page}}页 共{{payrollsMgr.pageNum}}页</span>
+      <md-button class="md-icon-button" ng-click="payrollsMgr.prev()" ng-disabled="payrollsMgr.page == 1">
+        <md-icon>keyboard_arrow_left</md-icon>
+        <md-tooltip>上一页</md-tooltip>
+      </md-button>
+      <md-button class="md-icon-button" ng-click="payrollsMgr.next()" ng-disabled="payrollsMgr.page == payrollsMgr.pageNum">
+        <md-icon>keyboard_arrow_right</md-icon>
+        <md-tooltip>下一页</md-tooltip>
+      </md-button>
+    </div>
+  </div>
+</div>
+<div class="transparency {{payrollsMgr.showOrHide}}">
+  <div class="tips">
+    <md-toolbar class="md-accent person-details">
+      <div class="md-toolbar-tools person-details">
+        <div flex>
+          <h2>工资详情</h2>
+        </div>
+      </div>
+    </md-toolbar>
+    <md-divider layout-align="start center" style="margin: 0 16px"></md-divider>
+    <div class="name_mobile">
+      <span>姓名：{{payrollsMgr.name}}</span>
+      <span>手机号：{{payrollsMgr.mobile}}</span>
+    </div>
+    <div class="tips-details">
+      <div class="realMoney">实发金额：{{payrollsMgr.realMoney}}</div>
+      <span data-ng-repeat="item in payrollsMgr.detailList | Payroll_detail track by $index">
+        <span data-ng-repeat="(key,val) in item">{{key}}: {{val}}</span>
+      </span>
+    </div>
+    <md-button class="md-primary md-raised button" ng-click="payrollsMgr.close()">
+      关闭
+    </md-button>
+  </div>
+</div>

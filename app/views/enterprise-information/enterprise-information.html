@@ -1,0 +1,29 @@
+  <md-toolbar class="md-accent agent-web">
+    <div class="md-toolbar-tools">
+      <h2>企业信息</h2>
+    </div>
+  </md-toolbar>
+  <md-divider layout-align="start center" class="agent-web"></md-divider>
+  <div class="md-padding">
+    <form class="mini-form" ng-submit="$ctrl.update()">
+      <md-input-container class="md-block">
+        <label>企业名称</label>
+        <input ng-model="$ctrl.company.companyName"/>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>行业</label>
+        <md-select ng-model="$ctrl.company.industryDictId">
+          <md-option ng-repeat="type in $ctrl.businessTypes" value="{{type.dictInfoId}}">{{type.infoName}}</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>规模</label>
+        <md-select ng-model="$ctrl.company.scaleDictId">
+          <md-option ng-repeat="type in $ctrl.scaleTypes" value="{{type.dictInfoId}}">{{type.infoName}}</md-option>
+        </md-select>
+      </md-input-container>
+      <div>
+        <md-button type="submit" class="md-raised md-primary">保存</md-button>
+      </div>
+    </form>
+  </div>
